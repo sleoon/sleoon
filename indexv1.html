@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastián León — Ingeniería en Sistemas</title>
+<meta name="description" content="Portafolio profesional de Sebastián León, estudiante de Ingeniería en Sistemas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A12;
+    --panel:rgba(255,255,255,0.045);
+    --panel-border:rgba(255,255,255,0.09);
+    --panel-hover:rgba(255,255,255,0.07);
+    --text:#F3F3F7;
+    --text-soft:#A6A6B8;
+    --text-faint:#6C6C82;
+    --violet:#8B7CFF;
+    --violet-deep:#6C4CFF;
+    --blue:#4CC9FF;
+    --signal:#3DD68C;
+    --radius-lg:22px;
+    --radius-md:14px;
+    --sans:'Inter', sans-serif;
+    --display:'Sora', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px;}
+  ::selection{background:rgba(139,124,255,.35);color:#fff;}
+
+  .glow{position:fixed;border-radius:50%;filter:blur(120px);z-index:0;pointer-events:none;}
+  .glow-1{width:560px;height:560px;background:radial-gradient(circle,rgba(108,76,255,.45),transparent 70%);top:-160px;left:-120px;}
+  .glow-2{width:640px;height:640px;background:radial-gradient(circle,rgba(76,201,255,.28),transparent 70%);top:280px;right:-220px;}
+  .glow-3{width:480px;height:480px;background:radial-gradient(circle,rgba(139,124,255,.22),transparent 70%);bottom:-100px;left:20%;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+
+  .navbar{position:sticky;top:18px;z-index:50;display:flex;justify-content:center;padding:0 20px;}
+  .pill-nav{
+    display:flex;align-items:center;gap:6px;
+    background:rgba(18,18,28,.72);border:1px solid var(--panel-border);
+    backdrop-filter:blur(18px);border-radius:999px;padding:8px 8px 8px 20px;
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+  }
+  .pill-logo{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.01em;margin-right:14px;white-space:nowrap;}
+  .pill-links{display:flex;gap:2px;}
+  .pill-links a{font-size:13px;font-weight:500;color:var(--text-soft);padding:8px 14px;border-radius:999px;transition:.15s ease;white-space:nowrap;}
+  .pill-links a:hover{color:var(--text);background:var(--panel-hover);}
+  .pill-cta{
+    font-family:var(--sans);font-size:13px;font-weight:600;color:#0A0A12;
+    background:linear-gradient(135deg,var(--violet),var(--blue));
+    padding:9px 18px;border-radius:999px;margin-left:10px;white-space:nowrap;
+  }
+  @media (max-width:720px){ .pill-links{display:none;} .pill-nav{padding:8px 8px 8px 16px;} }
+
+  section{padding:96px 0;position:relative;z-index:1;}
+  .eyebrow-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:12px;color:var(--text-soft);
+    background:var(--panel);border:1px solid var(--panel-border);
+    padding:7px 14px;border-radius:999px;margin-bottom:24px;
+  }
+  .dot-live{width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 8px var(--signal);}
+
+  .section-head{margin-bottom:44px;}
+  .section-label{font-family:var(--mono);font-size:12px;color:var(--violet);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+  h2{font-family:var(--display);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.01em;}
+
+  .hero{padding-top:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  @media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:36px;gap:40px;}}
+  h1{font-family:var(--display);font-size:clamp(36px,5.2vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:20px;}
+  h1 .accent{background:linear-gradient(135deg,var(--violet),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-role{font-size:17px;color:var(--text-soft);max-width:46ch;margin-bottom:32px;}
+  .hero-role b{color:var(--text);font-weight:600;}
+
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{font-family:var(--sans);font-size:14px;font-weight:600;padding:13px 24px;border-radius:12px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease, box-shadow .15s ease;}
+  .btn-primary{background:linear-gradient(135deg,var(--violet),var(--violet-deep));color:#fff;box-shadow:0 8px 24px rgba(108,76,255,.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(108,76,255,.45);}
+  .btn-ghost{background:var(--panel);border:1px solid var(--panel-border);color:var(--text);}
+  .btn-ghost:hover{background:var(--panel-hover);transform:translateY(-2px);}
+
+  .social-row{display:flex;gap:14px;margin-top:32px;}
+  .social-row a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--panel-border);font-size:15px;transition:.15s ease;}
+  .social-row a:hover{background:var(--panel-hover);border-color:var(--violet);}
+
+  .avatar-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius-lg);padding:32px;backdrop-filter:blur(20px);text-align:center;position:relative;}
+  .avatar-ring{width:132px;height:132px;border-radius:50%;margin:0 auto 20px;background:linear-gradient(135deg,var(--violet),var(--blue));padding:4px;}
+  .avatar-ring-inner{width:100%;height:100%;border-radius:50%;background:#181826;overflow:hidden;}
+  .avatar-ring-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+  .avatar-name{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:4px;}
+  .avatar-role{font-size:13px;color:var(--text-soft);margin-bottom:18px;}
+  .avatar-stack{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+
+  .chip{font-family:var(--mono);font-size:11px;font-weight:500;background:rgba(255,255,255,.06);border:1px solid var(--panel-border);padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .chip-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+  .split{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;}
+  @media (max-width:800px){.split{grid-template-columns:1fr;}}
+  .card{background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius-lg);padding:32px;backdrop-filter:blur(20px);}
+  .card h3{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:14px;}
+  .card p{color:var(--text-soft);margin-bottom:14px;}
+  .quote-block{border-left:3px solid var(--violet);background:rgba(139,124,255,.08);padding:16px 20px;border-radius:0 12px 12px 0;margin-top:18px;}
+  .quote-block p{color:var(--text);margin:0;}
+
+  .timeline-item{padding:14px 0;border-bottom:1px solid var(--panel-border);}
+  .timeline-item:last-child{border-bottom:none;}
+  .timeline-year{font-family:var(--mono);font-size:11px;color:var(--violet);}
+  .timeline-title{font-weight:600;font-size:14px;margin-top:3px;}
+  .timeline-sub{font-size:12px;color:var(--text-faint);margin-top:2px;}
+
+  .skills-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .skill-chip{font-family:var(--sans);font-size:13px;font-weight:500;background:var(--panel);border:1px solid var(--panel-border);padding:9px 16px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:.15s ease;}
+  .skill-chip:hover{background:var(--panel-hover);transform:translateY(-2px);}
+  .skill-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+  .proj-card{background:var(--panel);border:1px solid var(--panel-border);border-radius:var(--radius-lg);padding:26px;transition:.2s ease;position:relative;overflow:hidden;}
+  .proj-card:hover{border-color:rgba(139,124,255,.5);transform:translateY(-4px);}
+  .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--blue));opacity:0;transition:.2s ease;}
+  .proj-card:hover::before{opacity:1;}
+  .proj-card h3{font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:10px;}
+  .proj-card p{color:var(--text-soft);font-size:14px;margin-bottom:16px;}
+  .proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+  .proj-links{display:flex;gap:16px;font-size:13px;font-weight:600;}
+  .proj-links a{color:var(--violet);}
+  .proj-links a:hover{text-decoration:underline;}
+
+  .cta-card{background:linear-gradient(135deg,rgba(108,76,255,.18),rgba(76,201,255,.12));border:1px solid var(--panel-border);border-radius:var(--radius-lg);padding:56px 40px;text-align:center;position:relative;overflow:hidden;}
+  .cta-card h2{margin-bottom:14px;}
+  .cta-card p{color:var(--text-soft);max-width:46ch;margin:0 auto 28px;}
+  .cta-orb{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--blue));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 0 40px rgba(108,76,255,.5);font-size:22px;}
+
+  footer{padding:40px 0 60px;text-align:center;color:var(--text-faint);font-size:13px;font-family:var(--mono);position:relative;z-index:1;}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+
+<div class="navbar">
+  <nav class="pill-nav">
+    <span class="pill-logo">S.L.</span>
+    <div class="pill-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#certificaciones">Certificaciones</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="assets/CV_Sebastian_Leon.pdf" class="pill-cta" target="_blank">Descargar CV</a>
+  </nav>
+</div>
+
+<section id="inicio" class="wrap hero">
+  <div>
+    <div class="eyebrow-pill"><span class="dot-live"></span>Disponible para prácticas / proyectos</div>
+    <h1>Hola, soy <span class="accent">Sebastián León</span></h1>
+    <p class="hero-role">Estudiante de <b>Ingeniería en Sistemas (Junior)</b>, enfocado en base de datos SQL Server, desarrollo web y datos. Construyo soluciones prácticas y disfruto resolver problemas reales con código.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="assets/CV_Sebastian_Leon.pdf" target="_blank">↓ Descargar CV</a>
+      <a class="btn btn-ghost" href="#contacto">Contactarme</a>
+    </div>
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/sebastian-leon-r9/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="mailto:sebasleon.cr@gmail.com" aria-label="Correo">@</a>
+    </div>
+  </div>
+
+  <div class="avatar-card">
+    <div class="avatar-ring"><div class="avatar-ring-inner"><img src="assets/WhatsApp Image 2026-07-03 at 9.04.45 PM.jpeg" alt="Foto de Sebastián León"></div></div>
+    <div class="avatar-name">Sebastián León</div>
+    <div class="avatar-role">Ingeniería en Sistemas</div>
+    <div class="avatar-stack">
+      <span class="chip"><span class="chip-dot" style="background:#4CC9FF"></span>C#</span>
+      <span class="chip"><span class="chip-dot" style="background:#8B7CFF"></span>Python</span>
+      <span class="chip"><span class="chip-dot" style="background:#3DD68C"></span>SQL</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi" class="wrap">
+  <div class="section-head">
+    <div class="section-label">// perfil</div>
+    <h2>Sobre mí</h2>
+  </div>
+  <div class="split">
+    <div class="card">
+      <h3>Quién soy</h3>
+      <p>Me considero una persona comprometida con el aprendizaje continuo y con mantenerme actualizado en las tecnologías emergentes. Cuento con conocimientos prácticos en SQL Server (consultas, optimización y administración de bases de datos relacionales), además de un nivel de inglés intermedio-avanzado (B2).</p>
+      <p>Actualmente participo en el desarrollo de una aplicación para la gestión de gastos utilizando un entorno de desarrollo basado en WSL, Podman y Go. Este proyecto me ha permitido trabajar con herramientas utilizadas en entornos laborales reales.</p>
+      <div class="quote-block">
+        <p><b>¿Qué me diferencia?</b> Uno de mis puntos fuertes es el uso del inglés, tanto para el aprendizaje de nuevas herramientas como para la comunicación efectiva, lo que me permite desenvolverme en entornos profesionales e internacionales.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Estudios</h3>
+      <div class="timeline-item">
+        <div class="timeline-year">2023 — presente</div>
+        <div class="timeline-title">Bachillerato en Ingeniería en Sistemas</div>
+        <div class="timeline-sub">Universidad Latina de Costa Rica</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-title">Título de secundaria</div>
+        <div class="timeline-sub">Colegio Sagrado Corazón de Jesús</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="section-label">// habilidades</div>
+    <h2>Stack técnico</h2>
+  </div>
+  <div class="skills-row">
+    <span class="skill-chip"><span class="skill-dot" style="background:#F7DF1E"></span>C#</span>
+    <span class="skill-chip"><span class="skill-dot" style="background:#3776AB"></span>SQL</span>
+    <span class="skill-chip"><span class="skill-dot" style="background:#E34F26"></span>HTML5</span>
+    <span class="skill-chip"><span class="skill-dot" style="background:#1572B6"></span>CSS3</span>
+    <span class="skill-chip"><span class="skill-dot" style="background:#F05032"></span>Git</span>
+  </div>
+</section>
+
+<section id="proyectos" class="wrap">
+  <div class="section-head">
+    <div class="section-label">// trabajo</div>
+    <h2>Proyectos</h2>
+  </div>
+  <div class="grid">
+    <div class="proj-card">
+      <h3>Creación de un sistema estilo Aeropost</h3>
+      <p>Desarrollo de un sistema de gestión de paquetes para una empresa de logística. El objetivo del proyecto era administrar clientes, paquetes, facturación y usuarios mediante una aplicación desarrollada con C#, ASP.NET MVC, SQL Server y Git para el control de versiones. Este proyecto fortaleció mis conocimientos en desarrollo de aplicaciones, lógica de programación, trabajo colaborativo y buenas prácticas de control de versiones.</p>
+      <div class="proj-stack">
+        <span class="chip"><span class="chip-dot" style="background:#61DAFB"></span>C#</span>
+        <span class="chip"><span class="chip-dot" style="background:#339933"></span>ASP.NET MVC</span>
+        <span class="chip"><span class="chip-dot" style="background:#4479A1"></span>SQL Server</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <h3>BudgetApp — En desarrollo</h3>
+      <p>Aplicación de gestión financiera personal orientada a usuarios de Costa Rica, que permite registrar, importar y analizar transacciones bancarias de manera sencilla y organizada. El sistema busca facilitar el control de las finanzas personales mediante la importación de archivos CSV de bancos nacionales, categorización inteligente de gastos, manejo de cuentas en colones y dólares, y visualización del flujo de efectivo y planes de presupuesto mensuales.</p>
+      <div class="proj-stack">
+        <span class="chip"><span class="chip-dot" style="background:#3776AB"></span>Go</span>
+        <span class="chip"><span class="chip-dot" style="background:#8B7CFF"></span>PostgreSQL</span>
+        <span class="chip"><span class="chip-dot" style="background:#8B7CFF"></span>Podman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificaciones" class="wrap">
+  <div class="section-head">
+    <div class="section-label">// historial</div>
+    <h2>Próximas metas de formación</h2>
+  </div>
+  <div class="card">
+    <div class="timeline-item">
+      <div class="timeline-year">Meta 2026 — Microsoft</div>
+      <div class="timeline-title">DP-900: Azure Data Fundamentals</div>
+      <div class="timeline-sub">A cursar próximamente</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Meta 2026 — Microsoft</div>
+      <div class="timeline-title">DP-300: Azure Database Administrator Associate</div>
+      <div class="timeline-sub">A cursar próximamente</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="wrap">
+  <div class="cta-card">
+    <div class="cta-orb">✉</div>
+    <h2>Hablemos</h2>
+    <p>Actualmente busco formar parte de una organización o proyecto donde pueda aportar mis conocimientos, enfrentar nuevos desafíos y seguir desarrollándome profesionalmente. Aspiro a crecer como ingeniero especializado en bases de datos. Si crees que puedo aportar a tu equipo, escríbeme.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <a class="btn btn-primary" href="mailto:sebasleon.cr@gmail.com">Enviar correo</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/sebastian-leon-r9/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Sebastián León · Hecho con GitHub Pages</footer>
+
+</body>
+</html>
